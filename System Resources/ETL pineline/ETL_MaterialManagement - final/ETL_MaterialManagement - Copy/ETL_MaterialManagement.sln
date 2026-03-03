@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "ETL_MaterialManagement", "ETL_MaterialManagement.dtproj", "{19C5915E-6EC7-EB56-8538-E79FDE5307FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19C5915E-6EC7-EB56-8538-E79FDE5307FB}.Development|Default.ActiveCfg = Development
+		{19C5915E-6EC7-EB56-8538-E79FDE5307FB}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16B45065-91BD-428C-AA3E-4AF1CD39C35F}
+	EndGlobalSection
+EndGlobal
