@@ -1,7 +1,8 @@
 # Material Purchase & Planning BI System
 
-> An end-to-end Business Intelligence solution for procurement and inventory planning,
-> built on SQL Server Data Warehouse, SSIS ETL, Python ML models, and Power BI.
+This project investigates CompanyX’s material purchasing and planning to improve procurement efficiency, optimize inventory levels, and strengthen supply chain reliability. It consolidates and cleans transactional data from ERP/MRP systems, then models it in a dedicated SQL Server data warehouse designed for incremental loading and near real-time updates. An SSIS ETL pipeline standardizes purchasing and inventory data to provide a consistent single source of truth.
+
+On top of the warehouse, the project applies machine learning to support better planning decisions: Prophet time-series forecasting predicts monthly demand per product, while Random Forest Regression ranks and recommends vendors using performance factors such as cost, lead time, and reliability. Insights are delivered through an interactive Power BI dashboard for spend analysis and inventory optimization, and a practical use case demonstrates how forecasts and analytics can recalibrate reorder points to reduce stockout risk while improving working-capital efficiency.
 
 
 
