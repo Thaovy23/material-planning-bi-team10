@@ -12,16 +12,16 @@ End-to-end **BI + Data Warehouse + ML** project for material purchasing and plan
 
 ### a) System architecture
 
-![System architecture](System%20Resources/BI%20Visualization/system-architecture.png)
+![System architecture](images/system-architecture.png)
 
-- Data sources: ERP/MRP (purchasing, inventory, BOM)  
+- Data sources: AdventureWorks sample OLTP database  
 - ETL: SSIS → Data Warehouse (Star Schema)  
 - Analytics: Python (Prophet, Random Forest) exporting CSV outputs  
 - BI: Power BI reading from DW + forecast CSVs  
 
 ### b) Star Schema (DW)
 
-![Star schema](System%20Resources/BI%20Visualization/star-schema.png)
+![Star schema](images/star-schema.png)
 
 - Fact: `FactMaterial` (OrderQty, ReceivedQty, Cost, TotalDue, etc.)  
 - Dimensions: `DimProduct`, `DimVendor`, `DimDate`, `DimShipMethod`  
@@ -29,7 +29,7 @@ End-to-end **BI + Data Warehouse + ML** project for material purchasing and plan
 
 ### c) Power BI dashboard
 
-![Power BI Dashboard](System%20Resources/BI%20Visualization/bi-dashboard.png)
+![Power BI Dashboard](images/bi-dashboard.png)
 
 - Inventory status (Safe / Warning / Emergency)  
 - Historical purchases and 6‑month demand forecast  
@@ -71,8 +71,9 @@ Run in order:
 Team10/
 ├── README.md
 ├── Report/                      # Technical report (PDF)
+├── images/                      # Architecture, schema, dashboard screenshots
 └── System Resources/
-    ├── BI Visualization/        # Power BI + schema/dashboard images
+    ├── BI Visualization/        # Power BI file (.pbix)
     ├── Data Warehouse Design/   # DW design artifacts
     ├── ETL pineline/            # SSIS packages & config
     └── ML/                      # Prophet + Random Forest + CSV
