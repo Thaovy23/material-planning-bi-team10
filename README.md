@@ -3,7 +3,7 @@
 > An end-to-end Business Intelligence solution for procurement and inventory planning,
 > built on SQL Server Data Warehouse, SSIS ETL, Python ML models, and Power BI.
 
----
+
 
 ## Overview
 
@@ -15,7 +15,7 @@
 | Machine Learning | Prophet · Random Forest (Python) |
 | BI Dashboard | Power BI Desktop (DirectQuery) |
 
----
+
 
 ## Architecture
 
@@ -23,7 +23,7 @@
 
 The pipeline flows: **ERP/OLTP → ETL (SSIS) → Data Warehouse → ML models → Power BI**.
 
----
+
 
 ## Data Warehouse Design
 
@@ -33,7 +33,7 @@ The pipeline flows: **ERP/OLTP → ETL (SSIS) → Data Warehouse → ML models �
 - **Dimensions:** `DimProduct` · `DimVendor` · `DimDate` · `DimShipMethod`
 - **Bridge:** `ProductVendor` — vendor terms (price, lead time, min/max order qty)
 
----
+
 
 ## Power BI Dashboard
 
@@ -45,7 +45,7 @@ The pipeline flows: **ERP/OLTP → ETL (SSIS) → Data Warehouse → ML models �
 | Demand | 6-month forecast vs. historical orders |
 | Vendor | Recommended suppliers ranked by cost · lead time · rating |
 
----
+
 
 ## Machine Learning
 
@@ -58,7 +58,7 @@ The pipeline flows: **ERP/OLTP → ETL (SSIS) → Data Warehouse → ML models �
 - Composite vendor score from: `AverageCost`, `AverageLeadTime`, `CreditRating`, `PreferredVendorStatus`, `ActiveFlag`
 - Inactive vendors excluded automatically
 
----
+
 
 ## Quick Start
 
@@ -76,7 +76,7 @@ Open Power BI:
 - File: `System Resources/BI Visualization/MPP_BI Dashboard.pbix`
 - Update SQL Server connection string if needed
 
----
+
 
 ## Repository Structure
 
@@ -93,7 +93,7 @@ Team10/
         └── Monthly Demand Forecast/ # Prophet notebook + CSV
 ```
 
----
+
 
 ## Contributors
 
