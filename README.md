@@ -1,90 +1,106 @@
-# Material Purchase & Planning BI System (CompanyX)
+# Material Purchase & Planning BI System
 
-End-to-end **BI + Data Warehouse + ML** project for material purchasing and planning:
-
-- **DW & ETL:** SQL Server + SSIS (incremental, near real-time)  
-- **Analytics:** Prophet (demand forecasting) + Random Forest (vendor scoring)  
-- **BI:** Power BI dashboard for inventory, spend, and supplier performance  
+> An end-to-end Business Intelligence solution for procurement and inventory planning,
+> built on SQL Server Data Warehouse, SSIS ETL, Python ML models, and Power BI.
 
 ---
 
-## 1) Visual overview
+## Overview
 
-### a) System architecture
+| Layer | Technology |
+|---|---|
+| Data Source | AdventureWorks OLTP (SQL Server) |
+| Data Warehouse | Star Schema — SQL Server |
+| ETL | SSIS (incremental + near real-time) |
+| Machine Learning | Prophet · Random Forest (Python) |
+| BI Dashboard | Power BI Desktop (DirectQuery) |
+
+---
+
+## Architecture
 
 ![System architecture](images/system-architecture.png)
 
-- Data sources: AdventureWorks sample OLTP database  
-- ETL: SSIS → Data Warehouse (Star Schema)  
-- Analytics: Python (Prophet, Random Forest) exporting CSV outputs  
-- BI: Power BI reading from DW + forecast CSVs  
+The pipeline flows: **ERP/OLTP → ETL (SSIS) → Data Warehouse → ML models → Power BI**.
 
-### b) Star Schema (DW)
+---
+
+## Data Warehouse Design
 
 ![Star schema](images/star-schema.png)
 
-- Fact: `FactMaterial` (OrderQty, ReceivedQty, Cost, TotalDue, etc.)  
-- Dimensions: `DimProduct`, `DimVendor`, `DimDate`, `DimShipMethod`  
-- Bridge: `ProductVendor` (price, lead time, min/max order, and other terms)  
+- **Fact:** `FactMaterial` — purchasing transactions (OrderQty, ReceivedQty, Cost, TotalDue)
+- **Dimensions:** `DimProduct` · `DimVendor` · `DimDate` · `DimShipMethod`
+- **Bridge:** `ProductVendor` — vendor terms (price, lead time, min/max order qty)
 
-### c) Power BI dashboard
+---
+
+## Power BI Dashboard
 
 ![Power BI Dashboard](images/bi-dashboard.png)
 
-- Inventory status (Safe / Warning / Emergency)  
-- Historical purchases and 6‑month demand forecast  
-- Recommended vendors based on cost, lead time, and rating  
+| View | Key indicators |
+|---|---|
+| Inventory | Safe / Warning / Emergency status per product |
+| Demand | 6-month forecast vs. historical orders |
+| Vendor | Recommended suppliers ranked by cost · lead time · rating |
 
 ---
 
-## 2) What this project demonstrates (for CV)
+## Machine Learning
 
-- **Data engineering:** Star Schema design, incremental SSIS ETL, near real-time job scheduling.  
-- **Data science:** time-series demand forecasting with Prophet, vendor scoring with Random Forest.  
-- **BI & storytelling:** Power BI dashboard for purchasing, inventory health, and supplier performance.  
+### Demand Forecasting — Prophet
+- Monthly demand forecast per product (6-month horizon)
+- Log-transform pipeline; negative predictions clipped to zero
+- Outputs: `ForecastMonth`, `PredictedDemandQty`, `LowerBound`, `UpperBound`
+
+### Vendor Scoring — Random Forest Regression
+- Composite vendor score from: `AverageCost`, `AverageLeadTime`, `CreditRating`, `PreferredVendorStatus`, `ActiveFlag`
+- Inactive vendors excluded automatically
 
 ---
 
-## 3) Quick start
-
-### ML notebooks
+## Quick Start
 
 ```bash
 pip install pandas scikit-learn prophet matplotlib
 ```
 
-Run in order:
+Run notebooks in order:
 
-- `System Resources/ML/Vendor Selection/Random_Forest_Regression.ipynb`  
-- `System Resources/ML/Monthly Demand Forecast/Time_Series_Forecasting_(Prophet).ipynb`  
+1. `System Resources/ML/Vendor Selection/Random_Forest_Regression.ipynb`
+2. `System Resources/ML/Monthly Demand Forecast/Time_Series_Forecasting_(Prophet).ipynb`
 
-### Power BI
+Open Power BI:
 
-- Open `System Resources/BI Visualization/MPP_BI Dashboard.pbix`  
-- Update SQL Server / Data Warehouse connections if needed  
+- File: `System Resources/BI Visualization/MPP_BI Dashboard.pbix`
+- Update SQL Server connection string if needed
 
 ---
 
-## 4) Repository structure (short)
+## Repository Structure
 
 ```text
 Team10/
-├── README.md
-├── Report/                      # Technical report (PDF)
-├── images/                      # Architecture, schema, dashboard screenshots
+├── images/                          # Architecture, schema, dashboard screenshots
+├── Report/                          # Technical report (PDF)
 └── System Resources/
-    ├── BI Visualization/        # Power BI file (.pbix)
-    ├── Data Warehouse Design/   # DW design artifacts
-    ├── ETL pineline/            # SSIS packages & config
-    └── ML/                      # Prophet + Random Forest + CSV
+    ├── BI Visualization/            # Power BI file (.pbix)
+    ├── Data Warehouse Design/       # DW design artifacts
+    ├── ETL pineline/                # SSIS packages & config
+    └── ML/
+        ├── Vendor Selection/        # Random Forest notebook + CSV
+        └── Monthly Demand Forecast/ # Prophet notebook + CSV
 ```
 
 ---
 
-## 5) Contributors
+## Contributors
 
-- **Pham Duc Manh** (10422047@student.vgu.edu.vn)  
-- **Nguyen Thao Vy** (10421067@student.vgu.edu.vn)  
-- **Luong Tieu Cuong** (104220889@student.vgu.edu.vn)  
-- **Nguyen Thien Nguyen** (10422059@student.vgu.edu.vn)  
-- **Nguyen Hoang Yen Ngoc** (10422056@student.vgu.edu.vn)  
+| Name | Student ID |
+|---|---|
+| Pham Duc Manh | 10422047 |
+| Nguyen Thao Vy | 10421067 |
+| Luong Tieu Cuong | 104220889 |
+| Nguyen Thien Nguyen | 10422059 |
+| Nguyen Hoang Yen Ngoc | 10422056 |
